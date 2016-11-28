@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		970DECAC1DE6807B00D6C82C /* UINavigationController+XMNFullScreenPop.m in Sources */ = {isa = PBXBuildFile; fileRef = 970DECAB1DE6807B00D6C82C /* UINavigationController+XMNFullScreenPop.m */; };
-		970DECAF1DE69A4800D6C82C /* XMNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 970DECAE1DE69A4800D6C82C /* XMNNavigationController.m */; };
-		970DECB21DE69A5600D6C82C /* NSArray+XMNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 970DECB11DE69A5600D6C82C /* NSArray+XMNUtils.m */; };
+		9733B2151DEBFBDA0078E1AA /* NSArray+XMNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733B2101DEBFBDA0078E1AA /* NSArray+XMNUtils.m */; };
+		9733B2161DEBFBDA0078E1AA /* UINavigationController+XMNFullScreenPop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733B2121DEBFBDA0078E1AA /* UINavigationController+XMNFullScreenPop.m */; };
+		9733B2171DEBFBDA0078E1AA /* XMNNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733B2141DEBFBDA0078E1AA /* XMNNavigationController.m */; };
 		97CE000F1DE6C3900000DF1E /* XMNNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE000E1DE6C3900000DF1E /* XMNNavigationBar.m */; };
 		97CE00121DE6DD1B0000DF1E /* XMNExampleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CE00111DE6DD1B0000DF1E /* XMNExampleController.m */; };
 		97E5A51A1DE56627005EC9BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5A5191DE56627005EC9BB /* main.m */; };
@@ -21,12 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		970DECAA1DE6807B00D6C82C /* UINavigationController+XMNFullScreenPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+XMNFullScreenPop.h"; sourceTree = "<group>"; };
-		970DECAB1DE6807B00D6C82C /* UINavigationController+XMNFullScreenPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+XMNFullScreenPop.m"; sourceTree = "<group>"; };
-		970DECAD1DE69A4800D6C82C /* XMNNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNNavigationController.h; sourceTree = "<group>"; };
-		970DECAE1DE69A4800D6C82C /* XMNNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNNavigationController.m; sourceTree = "<group>"; };
-		970DECB01DE69A5600D6C82C /* NSArray+XMNUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+XMNUtils.h"; sourceTree = "<group>"; };
-		970DECB11DE69A5600D6C82C /* NSArray+XMNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XMNUtils.m"; sourceTree = "<group>"; };
+		9733B20F1DEBFBDA0078E1AA /* NSArray+XMNUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+XMNUtils.h"; sourceTree = "<group>"; };
+		9733B2101DEBFBDA0078E1AA /* NSArray+XMNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XMNUtils.m"; sourceTree = "<group>"; };
+		9733B2111DEBFBDA0078E1AA /* UINavigationController+XMNFullScreenPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+XMNFullScreenPop.h"; sourceTree = "<group>"; };
+		9733B2121DEBFBDA0078E1AA /* UINavigationController+XMNFullScreenPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+XMNFullScreenPop.m"; sourceTree = "<group>"; };
+		9733B2131DEBFBDA0078E1AA /* XMNNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNNavigationController.h; sourceTree = "<group>"; };
+		9733B2141DEBFBDA0078E1AA /* XMNNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNNavigationController.m; sourceTree = "<group>"; };
 		97CE000D1DE6C3900000DF1E /* XMNNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNNavigationBar.h; sourceTree = "<group>"; };
 		97CE000E1DE6C3900000DF1E /* XMNNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMNNavigationBar.m; sourceTree = "<group>"; };
 		97CE00101DE6DD1B0000DF1E /* XMNExampleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMNExampleController.h; sourceTree = "<group>"; };
@@ -54,22 +54,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		970DECA91DE6806500D6C82C /* XMNNavigation */ = {
+		9733B20E1DEBFBDA0078E1AA /* XMNNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				970DECAD1DE69A4800D6C82C /* XMNNavigationController.h */,
-				970DECAE1DE69A4800D6C82C /* XMNNavigationController.m */,
-				970DECB01DE69A5600D6C82C /* NSArray+XMNUtils.h */,
-				970DECB11DE69A5600D6C82C /* NSArray+XMNUtils.m */,
-				970DECAA1DE6807B00D6C82C /* UINavigationController+XMNFullScreenPop.h */,
-				970DECAB1DE6807B00D6C82C /* UINavigationController+XMNFullScreenPop.m */,
+				9733B20F1DEBFBDA0078E1AA /* NSArray+XMNUtils.h */,
+				9733B2101DEBFBDA0078E1AA /* NSArray+XMNUtils.m */,
+				9733B2111DEBFBDA0078E1AA /* UINavigationController+XMNFullScreenPop.h */,
+				9733B2121DEBFBDA0078E1AA /* UINavigationController+XMNFullScreenPop.m */,
+				9733B2131DEBFBDA0078E1AA /* XMNNavigationController.h */,
+				9733B2141DEBFBDA0078E1AA /* XMNNavigationController.m */,
 			);
-			path = XMNNavigation;
+			name = XMNNavigation;
+			path = Classes/XMNNavigation;
 			sourceTree = "<group>";
 		};
 		97E5A50C1DE56627005EC9BB = {
 			isa = PBXGroup;
 			children = (
+				9733B20E1DEBFBDA0078E1AA /* XMNNavigation */,
 				97E5A5171DE56627005EC9BB /* XMNNavigationExample */,
 				97E5A5161DE56627005EC9BB /* Products */,
 			);
@@ -86,7 +88,6 @@
 		97E5A5171DE56627005EC9BB /* XMNNavigationExample */ = {
 			isa = PBXGroup;
 			children = (
-				970DECA91DE6806500D6C82C /* XMNNavigation */,
 				97E5A51B1DE56627005EC9BB /* AppDelegate.h */,
 				97E5A51C1DE56627005EC9BB /* AppDelegate.m */,
 				97E5A51E1DE56627005EC9BB /* ViewController.h */,
@@ -185,13 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				97CE000F1DE6C3900000DF1E /* XMNNavigationBar.m in Sources */,
-				970DECAF1DE69A4800D6C82C /* XMNNavigationController.m in Sources */,
 				97E5A5201DE56627005EC9BB /* ViewController.m in Sources */,
 				97E5A51D1DE56627005EC9BB /* AppDelegate.m in Sources */,
+				9733B2171DEBFBDA0078E1AA /* XMNNavigationController.m in Sources */,
 				97CE00121DE6DD1B0000DF1E /* XMNExampleController.m in Sources */,
-				970DECAC1DE6807B00D6C82C /* UINavigationController+XMNFullScreenPop.m in Sources */,
-				970DECB21DE69A5600D6C82C /* NSArray+XMNUtils.m in Sources */,
+				9733B2151DEBFBDA0078E1AA /* NSArray+XMNUtils.m in Sources */,
 				97E5A51A1DE56627005EC9BB /* main.m in Sources */,
+				9733B2161DEBFBDA0078E1AA /* UINavigationController+XMNFullScreenPop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
