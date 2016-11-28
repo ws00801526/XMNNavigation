@@ -47,7 +47,7 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
         XMNContainerController *containerC = (XMNContainerController *)controller;
         return containerC.contentViewController;
     }
-    return nil;
+    return controller;
 }
 
 #pragma mark - XMNContainerController
@@ -422,24 +422,11 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
         return;
     }
 
-    NSMutableArray *viewControllers = [self.viewControllers mutableCopy];
+    NSMutableArray *viewControllers = [[self.viewControllers xmn_map:^id _Nonnull(__kindof UIViewController * _Nullable obj, NSInteger index) {
+        return XMNSafeUnWrapViewController(obj);
+    }] mutableCopy];
     [viewControllers removeObject:viewController];
     [self setViewControllers:viewControllers animated:animated];
-    
-//    NSMutableArray<UIViewController *> *viewControllers = [[super viewControllers] mutableCopy];
-//    __block UIViewController *removeViewC;
-//    [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//       
-//        if (viewController == XMNSafeUnWrapViewController(obj)) {
-//            removeViewC = obj;
-//            *stop = YES;
-//        }
-//    }];
-//    
-//    if (removeViewC) {
-//        [viewControllers removeObject:removeViewC];
-//        [super setViewControllers:[NSArray arrayWithArray:viewControllers] animated:animated];
-//    }
 }
 
 #pragma mark - UINavigationController Delegate
@@ -535,17 +522,19 @@ shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRec
 
 #pragma mark - XMNNavigationController Getter
 
-- (UIViewController *)visibleViewController {
-    
-    return XMNSafeUnWrapViewController([super visibleViewController]);
-}
 
-- (NSArray<__kindof UIViewController *> *)viewControllers {
-    
-    return [[super viewControllers] xmn_map:^id(__kindof UIViewController *obj, NSInteger index) {
-        return XMNSafeUnWrapViewController(obj);
-    }];
-}
+/** !!! BUG Fixed  去除viewControllers 重写, 修复removeViewController 可能导致的 nil崩溃问题 */
+//- (UIViewController *)visibleViewController {
+//    
+//    return XMNSafeUnWrapViewController([super visibleViewController]);
+//}
+//
+//- (NSArray<__kindof UIViewController *> *)viewControllers {
+//    
+//    return [[super viewControllers] xmn_map:^id(__kindof UIViewController *obj, NSInteger index) {
+//        return XMNSafeUnWrapViewController(obj);
+//    }];
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     

@@ -16,7 +16,7 @@
  @param block 执行过滤的block
  @return 返回结果
  */
-- (NSArray *)xmn_map:(id(^)(ObjectType obj, NSInteger index))block;
+- (NSArray * __nullable)xmn_map:(id __nonnull(^ __nullable)(__nullable ObjectType obj, NSInteger index))block;
 
 
 /**
@@ -25,6 +25,6 @@
  @param block 执行判断的block方法
  @return YES or NO
  */
-- (BOOL)xmn_any:(BOOL(^)(ObjectType obj))block;
+- (BOOL)xmn_any:(BOOL(^ __nonnull)(__nullable ObjectType obj))block;
 
 @end

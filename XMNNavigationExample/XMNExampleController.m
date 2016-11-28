@@ -27,7 +27,7 @@
     self.view.backgroundColor = [XMNExampleController randomColor];
     self.title = [NSString stringWithFormat:@"Exmaple %d",(int)[self.xmn_navigationController.xmn_viewControllers count]];
     
-    NSLog(@"This is %d ExampleC \n  ExampleCs is :%@",(int)self.xmn_navigationController.viewControllers.count, self.xmn_navigationController.viewControllers);
+    NSLog(@"This is %d ExampleC \n  ExampleCs is :%@",(int)self.xmn_navigationController.xmn_viewControllers.count, self.xmn_navigationController.xmn_viewControllers);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,16 +63,16 @@
 - (IBAction)popToViewCAtIndex {
     
     NSInteger index = [self.indexTextFiled.text integerValue];
-    if (index < [self.xmn_navigationController viewControllers].count) {
-        UIViewController *viewController = [self.xmn_navigationController viewControllers][index];
-
+    if (index < [self.xmn_navigationController xmn_viewControllers].count) {
+        UIViewController *viewController = [self.xmn_navigationController xmn_viewControllers][index];
         NSArray *popViewCs =  [self.navigationController popToViewController:viewController animated:YES];
         NSLog(@"popViewCs :%@",popViewCs);
     }
 }
 
 
-+(UIColor *)randomColor{
++ (UIColor *)randomColor{
+    
     static BOOL seed = NO;
     if (!seed) {
         seed = YES;
