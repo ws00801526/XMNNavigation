@@ -11,6 +11,8 @@
 
 #import "XMNBubbleTransition.h"
 
+#import "UIViewController+XMNNavigation.h"
+
 @interface XMNExampleController () <UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UISwitch *removeSwitch;
