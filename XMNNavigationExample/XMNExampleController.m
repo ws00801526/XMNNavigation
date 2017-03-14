@@ -7,15 +7,20 @@
 //
 
 #import "XMNExampleController.h"
-
 #import "XMNNavigationController.h"
 
-@interface XMNExampleController ()
+#import "XMNBubbleTransition.h"
+
+@interface XMNExampleController () <UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UISwitch *removeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *hideSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *indexTextFiled;
+
+@property (strong, nonatomic) XMNBubbleTransition *bubbleTransition;
+
 
 @end
 
@@ -28,31 +33,43 @@
     self.title = [NSString stringWithFormat:@"Exmaple %d",(int)[self.xmn_navigationController.xmn_viewControllers count]];
     
     NSLog(@"This is %d ExampleC \n  ExampleCs is :%@",(int)self.xmn_navigationController.xmn_viewControllers.count, self.xmn_navigationController.xmn_viewControllers);
+    
+    self.bubbleTransition = [[XMNBubbleTransition alloc] init];
+//    self.xmn_navigationController.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Dispose of any resources that can be recreated.  
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    NSLog(@"%@ viewDidAppear",NSStringFromClass([self class]));
+
+    self.xmn_navigationController.delegate = self;
+}
+
 
 - (IBAction)pushNextExample {
     
     
     XMNExampleController *exampleC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"XMNExampleController"];
-    exampleC.xmn_prefersNavigationBarHidden = self.hideSwitch.on;
-    [self xmn_pushViewController:exampleC
-                          params:@{@"testKey":@"testValue",
-                                   @"testKey2":@"testValue2",
-                                   @"testKey3":@"testValue3"}
-            removeViewController:self.removeSwitch.on ? self : nil
-                 completionBlock:nil];
+    [self.navigationController pushViewController:exampleC animated:YES];
+//    exampleC.xmn_prefersNavigationBarHidden = self.hideSwitch.on;
+//    [self xmn_pushViewController:exampleC
+//                          params:@{@"testKey":@"testValue",
+//                                   @"testKey2":@"testValue2",
+//                                   @"testKey3":@"testValue3"}
+//            removeViewController:self.removeSwitch.on ? self : nil
+//                 completionBlock:nil];
 }
 
 - (IBAction)popBack {
     
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (IBAction)popRoot {
 
@@ -70,6 +87,16 @@
     }
 }
 
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC {
+    
+    self.bubbleTransition.mode = operation == UINavigationControllerOperationPush ? XMNBubbleTransitionModePresent : XMNBubbleTransitionModePop;
+    self.bubbleTransition.startPoint = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height);
+    self.bubbleTransition.bubbleColor = [XMNExampleController randomColor];
+    return self.bubbleTransition;
+}
 
 + (UIColor *)randomColor{
     
