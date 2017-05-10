@@ -10,6 +10,7 @@
 
 #import <objc/runtime.h>
 
+#import "UIViewController+XMNStyle.h"
 #import "UIViewController+XMNNavigation.h"
 
 @implementation NSArray (XMNNavigationPrivate)
@@ -192,10 +193,14 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
     
-    self = [super initWithNavigationBarClass:rootViewController.xmn_navigationBarClass toolbarClass:nil];
-    if (self) {
+    NSAssert(rootViewController, @"rootViewController cannot be nil");
+    
+    if (self = [super initWithNavigationBarClass:rootViewController.xmn_navigationBarClass toolbarClass:nil]) {
         [self pushViewController:rootViewController animated:NO];
         [self setNavigationBarHidden:rootViewController.xmn_prefersNavigationBarHidden];
+        if ([rootViewController respondsToSelector:@selector(xmn_configControllerStyle)]) {
+            [rootViewController xmn_configControllerStyle];
+        }
     }
     return self;
 }
