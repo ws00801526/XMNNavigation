@@ -11,6 +11,7 @@
 
 #import "XMNBubbleTransition.h"
 
+#import "UIViewController+XMNStyle.h"
 #import "UIViewController+XMNNavigation.h"
 
 @interface XMNExampleController () <UINavigationControllerDelegate>
@@ -45,6 +46,11 @@
     // Dispose of any resources that can be recreated.  
 }
 
+- (void)xmn_configControllerStyle {
+    
+    self.navigationController.navigationBar.barTintColor = self.navigationController.navigationBar.backgroundColor = [XMNExampleController randomColor];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
@@ -54,11 +60,17 @@
 }
 
 
+- (Class)xmn_navigationBarClass {
+    
+    return nil;
+//    return NSClassFromString(@"XMNWhiteNavigationBar");
+}
+
 - (IBAction)pushNextExample {
     
-    
     XMNExampleController *exampleC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"XMNExampleController"];
-    [self.navigationController pushViewController:exampleC animated:YES];
+    
+    [self pushViewController:exampleC];
 //    exampleC.xmn_prefersNavigationBarHidden = self.hideSwitch.on;
 //    [self xmn_pushViewController:exampleC
 //                          params:@{@"testKey":@"testValue",

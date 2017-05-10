@@ -8,10 +8,7 @@
 
 #import "ViewController.h"
 
-#import "XMNNavigationBar.h"
 #import "XMNNavigationController.h"
-
-//#import "UINavigationController+XMNFullScreenPop.h"
 
 @interface ViewController ()
 
@@ -38,8 +35,4 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (Class)xmn_navigationBarClass {
-    
-    return [XMNNavigationBar class];
-}
 @end
