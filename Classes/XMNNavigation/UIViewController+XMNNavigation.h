@@ -44,7 +44,7 @@
  @param params 需要设置给viewController 的参数
  */
 - (void)pushViewController:(UIViewController * __nonnull)viewController
-                        params:(NSDictionary * __nullable)params;
+                    params:(NSDictionary * __nullable)params;
 
 /**
  push到viewController
@@ -53,7 +53,7 @@
  @param removeViewC 需要从navigationController.viewControllers中移除的 viewC
  */
 - (void)pushViewController:(UIViewController * __nonnull)viewController
-          removeViewController:(UIViewController * __nullable)removeViewC;
+      removeViewController:(UIViewController * __nullable)removeViewC;
 
 /**
  push到viewController
@@ -64,9 +64,9 @@
  @param completionBlock push完成后回调block
  */
 - (void)pushViewController:(UIViewController * __nonnull)viewController
-                        params:(NSDictionary * __nullable)params
-          removeViewController:(UIViewController * __nullable)removeViewC
-               completionBlock:(void(^ __nullable)(BOOL finished))completionBlock;
+                    params:(NSDictionary * __nullable)params
+      removeViewController:(UIViewController * __nullable)removeViewC
+           completionBlock:(void(^ __nullable)(BOOL finished))completionBlock;
 
 
 /// ========================================

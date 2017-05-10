@@ -24,7 +24,7 @@
 
 
 - (void)pushViewController:(UIViewController * __nonnull)viewController
-                        params:(NSDictionary * __nullable)params {
+                    params:(NSDictionary * __nullable)params {
     
     
     [self pushViewController:viewController
@@ -60,7 +60,7 @@
         }];
     }
     
-    if (self.navigationController) {
+    if (self.xmn_navigationController) {
         
         __weak typeof(*&self) wSelf = self;
         [self.xmn_navigationController pushViewController:viewController completionBlock:^(BOOL finished) {
