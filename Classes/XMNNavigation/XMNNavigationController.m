@@ -464,11 +464,20 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
         return;
     }
 
-    NSMutableArray *viewControllers = [[self.viewControllers xmn_map:^id _Nonnull(__kindof UIViewController * _Nullable obj, NSInteger index) {
-        return XMNSafeUnWrapViewController(obj);
-    }] mutableCopy];
-    [viewControllers removeObject:viewController];
-    [self setViewControllers:viewControllers animated:animated];
+    NSMutableArray<__kindof UIViewController *> *controllers = [self.viewControllers mutableCopy];
+    __block UIViewController *controllerToRemove = nil;
+    [controllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if (XMNSafeUnWrapViewController(obj) == viewController) {
+            controllerToRemove = obj;
+            *stop = YES;
+        }
+    }];
+    
+    if (controllerToRemove) {
+        [controllers removeObject:controllerToRemove];
+        [super setViewControllers:[controllers copy] animated:animated];
+    }
 }
 
 #pragma mark - UINavigationController Delegate
