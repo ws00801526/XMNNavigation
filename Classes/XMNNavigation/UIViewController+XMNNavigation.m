@@ -23,6 +23,15 @@
 }
 
 
+- (void)pushViewController:(UIViewController *)viewController
+             removeCurrent:(BOOL)removeCurrent {
+    
+    [self pushViewController:viewController
+                      params:nil
+        removeViewController:removeCurrent ? self : nil
+             completionBlock:nil];
+}
+
 - (void)pushViewController:(UIViewController * __nonnull)viewController
                     params:(NSDictionary * __nullable)params {
     
@@ -62,14 +71,31 @@
     
     if (self.xmn_navigationController) {
         
-        __weak typeof(*&self) wSelf = self;
-        [self.xmn_navigationController pushViewController:viewController completionBlock:^(BOOL finished) {
-            __strong typeof(*&wSelf) self = wSelf;
-            [self.xmn_navigationController removeViewController:removeViewC];
-            completionBlock ? completionBlock(finished) : nil;
-        }];
+        if (removeViewC) {
+            
+            NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.xmn_navigationController.xmn_viewControllers];
+            [viewControllers removeObject:removeViewC];
+            [viewControllers addObject:viewController];
+            [self.xmn_navigationController setViewControllers:[viewControllers copy] completionHandler:completionBlock];
+        }else {
+            [self.xmn_navigationController pushViewController:viewController completionBlock:completionBlock];
+        }
+//        __weak typeof(*&self) wSelf = self;
+//        [self.xmn_navigationController pushViewController:viewController completionBlock:^(BOOL finished) {
+//            __strong typeof(*&wSelf) self = wSelf;
+//            [self.xmn_navigationController removeViewController:removeViewC];
+//            completionBlock ? completionBlock(finished) : nil;
+//        }];
     }else {
-        [self.navigationController pushViewController:viewController animated:YES];
+        
+        if (removeViewC) {
+            NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+            [viewControllers removeObject:removeViewC];
+            [viewControllers addObject:viewController];
+            [self.navigationController setViewControllers:[viewControllers copy] animated:YES];
+        }else {
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
     }
 }
 

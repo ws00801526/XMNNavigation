@@ -274,12 +274,13 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
     }
 }
 
-- (id)forwardingTargetForSelector:(SEL)aSelector {
-    
-    if ([self.navigationController respondsToSelector:aSelector])
-        return self.navigationController;
-    return nil;
-}
+//  去除forwardingTarget, 防止使用Aspect导致push动画错乱问题
+//- (id)forwardingTargetForSelector:(SEL)aSelector {
+//    
+//    if ([self.navigationController respondsToSelector:aSelector])
+//        return self.navigationController;
+//    return nil;
+//}
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     
@@ -452,6 +453,16 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
     return [self popToRootViewControllerAnimated:YES];
 }
 
+- (void)setViewControllers:(NSArray<UIViewController *> *)viewControllers completionHandler:(void(^)(BOOL finished))completionHandler {
+    
+    NSAssert((viewControllers && viewControllers.count), @"viewControllers.count should not be empty");
+    if (self.animationCompletionBlock) {
+        self.animationCompletionBlock(NO);
+    }
+    self.animationCompletionBlock = completionHandler;
+    [self setViewControllers:viewControllers animated:YES];
+}
+
 - (void)removeViewController:(__kindof UIViewController * __nonnull)viewController {
     
     [self removeViewController:viewController animated:NO];
@@ -572,7 +583,6 @@ shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRec
 }
 
 #pragma mark - XMNNavigationController Getter
-
 
 /** !!! BUG Fixed  去除viewControllers 重写, 修复removeViewController 可能导致的 nil崩溃问题 */
 //- (UIViewController *)visibleViewController {

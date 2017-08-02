@@ -70,8 +70,9 @@
     
     XMNExampleController *exampleC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"XMNExampleController"];
     
-    [self pushViewController:exampleC];
-//    exampleC.xmn_prefersNavigationBarHidden = self.hideSwitch.on;
+//    [self pushViewController:exampleC];
+    exampleC.xmn_prefersNavigationBarHidden = self.hideSwitch.on;
+    [self pushViewController:exampleC removeCurrent:self.removeSwitch.on];
 //    [self xmn_pushViewController:exampleC
 //                          params:@{@"testKey":@"testValue",
 //                                   @"testKey2":@"testValue2",
@@ -101,16 +102,16 @@
     }
 }
 
-- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                   animationControllerForOperation:(UINavigationControllerOperation)operation
-                                                fromViewController:(UIViewController *)fromVC
-                                                  toViewController:(UIViewController *)toVC {
-    
-    self.bubbleTransition.mode = operation == UINavigationControllerOperationPush ? XMNBubbleTransitionModePresent : XMNBubbleTransitionModePop;
-    self.bubbleTransition.startPoint = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height);
-    self.bubbleTransition.bubbleColor = [XMNExampleController randomColor];
-    return self.bubbleTransition;
-}
+//- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+//                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+//                                                fromViewController:(UIViewController *)fromVC
+//                                                  toViewController:(UIViewController *)toVC {
+//    
+//    self.bubbleTransition.mode = operation == UINavigationControllerOperationPush ? XMNBubbleTransitionModePresent : XMNBubbleTransitionModePop;
+//    self.bubbleTransition.startPoint = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height);
+//    self.bubbleTransition.bubbleColor = [XMNExampleController randomColor];
+//    return self.bubbleTransition;
+//}
 
 + (UIColor *)randomColor{
     

@@ -35,6 +35,16 @@
  */
 - (void)pushViewController:(UIViewController * __nonnull)viewController;
 
+
+/**
+ push到viewController
+ 
+ @param viewController push到的viewController
+ @param removeCurrent  是否需要remove当前
+ */
+- (void)pushViewController:(UIViewController * __nonnull)viewController
+             removeCurrent:(BOOL)removeCurrent;
+
 /**
  push到viewController
  
@@ -73,7 +83,6 @@
 /// @name   自定义pop方法
 /// ========================================
 
-
 /**
  pop回到前一个页面
 
@@ -108,7 +117,21 @@
 - (NSArray<UIViewController *> * __nullable)popToViewController:(UIViewController * __nonnull)viewController
                                                     completionBlock:(void(^ __nullable)(BOOL finished))completionBlock;
 
+
+/**
+ pop到第一个viewController
+
+ @return pop出去的viewControllers
+ */
 - (NSArray<UIViewController *> * __nullable)popToRootViewController;
+
+
+/**
+ pop到第一个viewController
+
+ @param completionBlock 完成回调
+ @return pop出去的viewControllers
+ */
 - (NSArray<UIViewController *> * __nullable)popToRootViewController:(void(^ __nullable)(BOOL finished))completionBlock;
 
 @end

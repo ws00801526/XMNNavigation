@@ -42,6 +42,15 @@
 
 
 /**
+ 重写setViewControllers动画, 可以执行completionHandler方法
+ 
+ @param viewControllers     需要设置的viewControllers
+ @param completionHandler   完成回调handler
+ */
+- (void)setViewControllers:(nonnull NSArray<UIViewController *> *)viewControllers
+         completionHandler:(nullable void(^)(BOOL finished))completionHandler;
+
+/**
  从已有的viewControllers中移除一个viewController
 
  @param viewController 需要移除的viewController
