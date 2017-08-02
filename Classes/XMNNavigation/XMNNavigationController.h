@@ -28,8 +28,6 @@
 /** 当前viewControllers栈  == self.viewControllers 已重写 */
 @property (strong, nonatomic, readonly, nullable) NSArray<UIViewController *> *xmn_viewControllers;
 
-
-
 - (void)pushViewController:(UIViewController * __nonnull)viewController
            completionBlock:(void(^__nullable )(BOOL finished))completionBlock;
 

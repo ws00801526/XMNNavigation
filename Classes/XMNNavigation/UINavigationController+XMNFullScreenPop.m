@@ -7,9 +7,8 @@
 //
 
 #import "UINavigationController+XMNFullScreenPop.h"
-
+#import "XMNNavigationController.h"
 #import <objc/runtime.h>
-
 
 #pragma mark - UIViewController (XMNFullScreenPopPrivate)
 
@@ -129,16 +128,23 @@ typedef void(^XMNViewControllerWillAppearExcuteBlock)(UIViewController *viewC, B
     }
     
     /** 过滤具体viewController 设置禁止手势返回 */
-    UIViewController *topViewController = self.viewControllers.lastObject;
-    if (topViewController.xmn_interactivePopDisabled) {
-        return NO;
+    UIViewController *lastViewController;
+    if ([self isKindOfClass:[XMNNavigationController class]]) {
+        lastViewController = [(XMNNavigationController *)self xmn_viewControllers].lastObject;
+    }else {
+        lastViewController = self.viewControllers.lastObject;
     }
-    
-    /** 忽略触发点 >= offset 的情况 */
-    CGPoint touchPoint = [gestureRecognizer locationInView:topViewController.view];
-    if (touchPoint.x >= topViewController.xmn_interactiveOffset) {
+    if (lastViewController && lastViewController.xmn_interactivePopDisabled) {
         
-        return NO;
+        if (lastViewController.xmn_interactivePopDisabled) {
+            return NO;
+        }
+        
+        /** 忽略触发点 >= offset 的情况 */
+        CGPoint touchPoint = [gestureRecognizer locationInView:lastViewController.view];
+        if (touchPoint.x >= lastViewController.xmn_interactiveOffset) {
+            return NO;
+        }
     }
     
     /** 忽略当手势正在进行时, 防止继续触发 */
