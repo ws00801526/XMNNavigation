@@ -134,7 +134,7 @@ typedef void(^XMNViewControllerWillAppearExcuteBlock)(UIViewController *viewC, B
     }else {
         lastViewController = self.viewControllers.lastObject;
     }
-    if (lastViewController && lastViewController.xmn_interactivePopDisabled) {
+    if (lastViewController) {
         
         if (lastViewController.xmn_interactivePopDisabled) {
             return NO;

@@ -80,12 +80,6 @@
         }else {
             [self.xmn_navigationController pushViewController:viewController completionBlock:completionBlock];
         }
-//        __weak typeof(*&self) wSelf = self;
-//        [self.xmn_navigationController pushViewController:viewController completionBlock:^(BOOL finished) {
-//            __strong typeof(*&wSelf) self = wSelf;
-//            [self.xmn_navigationController removeViewController:removeViewC];
-//            completionBlock ? completionBlock(finished) : nil;
-//        }];
     }else {
         
         if (removeViewC) {
