@@ -161,6 +161,12 @@ typedef void(^XMNViewControllerWillAppearExcuteBlock)(UIViewController *viewC, B
     return YES;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    return (gestureRecognizer == self.xmn_popGes);
+}
+
 #pragma mark - UINavigationController (XMNFullScreenPop) Setter
 
 - (void)setXmn_viewControllerPerfersBarStyleEnabled:(BOOL)enabled {

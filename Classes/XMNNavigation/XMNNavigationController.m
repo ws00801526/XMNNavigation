@@ -562,19 +562,6 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
     return nil;
 }
 
-#pragma mark - UIGestureRecognizerDelegate
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    
-    return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    
-    return (gestureRecognizer == self.interactivePopGestureRecognizer);
-}
-
 #pragma mark - XMNNavigationController Setter
 
 - (void)setDelegate:(id<UINavigationControllerDelegate>)delegate {
