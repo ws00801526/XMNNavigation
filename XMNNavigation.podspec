@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "XMNNavigation"
-  s.version      = "0.2.2"
+  s.version      = "0.2.3"
   s.summary      = "全屏手势返回,仿网易手势返回效果"
   s.homepage     = "https://github.com/ws00801526/XMNNavigation"
   s.license      = "MIT"
