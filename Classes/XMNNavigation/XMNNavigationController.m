@@ -7,10 +7,7 @@
 //
 
 #import "XMNNavigationController.h"
-
 #import <objc/runtime.h>
-
-#import "UIViewController+XMNStyle.h"
 #import "UIViewController+XMNNavigation.h"
 
 @implementation NSArray (XMNNavigationPrivate)
@@ -198,9 +195,13 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
     if (self = [super initWithNavigationBarClass:rootViewController.xmn_navigationBarClass toolbarClass:nil]) {
         [self pushViewController:rootViewController animated:NO];
         [self setNavigationBarHidden:rootViewController.xmn_prefersNavigationBarHidden];
+        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Weverything"
         if ([rootViewController respondsToSelector:@selector(xmn_configControllerStyle)]) {
-            [rootViewController xmn_configControllerStyle];
+            [rootViewController performSelector:@selector(xmn_configControllerStyle)];
         }
+#pragma clang diagnostic pop
     }
     return self;
 }
