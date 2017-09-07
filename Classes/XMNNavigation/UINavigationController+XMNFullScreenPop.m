@@ -161,10 +161,24 @@ typedef void(^XMNViewControllerWillAppearExcuteBlock)(UIViewController *viewC, B
     return YES;
 }
 
+/**
+ 重写此方法, 让其他的手势,均等待返回手势失败
+ 
+ @param gestureRecognizer      首要手势
+ @param otherGestureRecognizer 需要被失效的手势
+ @return 是否让otherGes失效
+ */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     
-    return (gestureRecognizer == self.xmn_popGes);
+    if (gestureRecognizer == self.xmn_popGes) {
+        if ([otherGestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
+            return [(UIScrollView *)otherGestureRecognizer.view contentOffset].x <= 0;
+        }else if ([otherGestureRecognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 #pragma mark - UINavigationController (XMNFullScreenPop) Setter

@@ -275,14 +275,6 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
     }
 }
 
-//  去除forwardingTarget, 防止使用Aspect导致push动画错乱问题
-//- (id)forwardingTargetForSelector:(SEL)aSelector {
-//    
-//    if ([self.navigationController respondsToSelector:aSelector])
-//        return self.navigationController;
-//    return nil;
-//}
-
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     
     if (self.navigationController)
@@ -571,19 +563,6 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
 }
 
 #pragma mark - XMNNavigationController Getter
-
-/** !!! BUG Fixed  去除viewControllers 重写, 修复removeViewController 可能导致的 nil崩溃问题 */
-//- (UIViewController *)visibleViewController {
-//    
-//    return XMNSafeUnWrapViewController([super visibleViewController]);
-//}
-//
-//- (NSArray<__kindof UIViewController *> *)viewControllers {
-//    
-//    return [[super viewControllers] xmn_map:^id(__kindof UIViewController *obj, NSInteger index) {
-//        return XMNSafeUnWrapViewController(obj);
-//    }];
-//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     

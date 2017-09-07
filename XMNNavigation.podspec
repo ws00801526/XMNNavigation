@@ -9,14 +9,13 @@
 Pod::Spec.new do |s|
 
   s.name         = "XMNNavigation"
-  s.version      = "0.3.0"
+  s.version      = "0.3.1"
   s.summary      = "全屏手势返回,仿网易手势返回效果"
   s.homepage     = "https://github.com/ws00801526/XMNNavigation"
   s.license      = "MIT"
   s.author       = { "XMFraker" => "3057600441@qq.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/ws00801526/XMNNavigation.git", :tag => "#{s.version}" }
-
   s.source_files  = "Classes/**/*.{h,m}"
   s.module_name = 'XMNNavigation'
 end

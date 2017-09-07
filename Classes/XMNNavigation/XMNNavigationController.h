@@ -23,9 +23,9 @@
 
 /** 当前的topViewController */
 @property (strong, nonatomic, readonly, nullable) UIViewController *xmn_topViewController;
-/** 当前可见的visiableController  == self.visiableController 已重写 */
+/** 当前可见的visiableController */
 @property (strong, nonatomic, readonly, nullable) UIViewController *xmn_visiableController;
-/** 当前viewControllers栈  == self.viewControllers 已重写 */
+/** 当前viewControllers栈 已重写 */
 @property (strong, nonatomic, readonly, nullable) NSArray<UIViewController *> *xmn_viewControllers;
 
 - (void)pushViewController:(UIViewController * __nonnull)viewController
