@@ -168,16 +168,29 @@
     return nil;
 }
 
-- (Class)xmn_navigationBarClass {
-    
-    return nil;
-}
-
 - (BOOL)transferNavigationBarAttributes {
     
     NSNumber *number = objc_getAssociatedObject(self, _cmd);
     return number ? [number boolValue] : NO;
 }
 
+#pragma mark - Class Methods
+
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    
+    if (sel == @selector(xmn_navigationBarClass:)) {
+        
+        class_addMethod([self class], sel, (IMP)wm_dynamicWMNavigationBarClassIMP, "v@:");
+        return YES;
+    }
+    return [super resolveInstanceMethod:sel];
+}
+
+void wm_dynamicWMNavigationBarClassIMP(id self, SEL _cmd) {
+    
+#if DEBUG
+    NSLog(@"if you what use xmn_navigationBarClass, you should implement this method");
+#endif
+}
 
 @end
