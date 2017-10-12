@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 
 @implementation UIViewController (XMNNavigation)
+@dynamic xmn_navigationBarClass;
 
 #pragma mark - Public Method
 
@@ -178,7 +179,7 @@
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     
-    if (sel == @selector(xmn_navigationBarClass:)) {
+    if (sel == @selector(xmn_navigationBarClass)) {
         
         class_addMethod([self class], sel, (IMP)wm_dynamicWMNavigationBarClassIMP, "v@:");
         return YES;

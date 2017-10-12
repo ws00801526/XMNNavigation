@@ -16,7 +16,7 @@
 @property (strong, nonatomic, readonly, nullable) XMNNavigationController *xmn_navigationController;
 
 /** 当前页面的自定义navigationBarClass
- * 需要自定义navigationBar 时,重写getter方法 返回自定义的navigationBarClass */
+ *  需要自定义navigationBar 时,重写getter方法 返回自定义的navigationBarClass */
 @property (strong, nonatomic, readonly, nullable) Class xmn_navigationBarClass;
 
 /** 是否使用XMNNavigationController 上的navigationBar样式 */
