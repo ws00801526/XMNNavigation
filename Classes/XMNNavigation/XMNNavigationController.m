@@ -80,7 +80,7 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
     if (controller && [controller isKindOfClass:[XMNContainerController class]]) {
         
         XMNContainerController *containerC = (XMNContainerController *)controller;
-        return containerC.contentViewController;
+        return containerC.contentViewController ? : controller;
     }
     return controller;
 }
@@ -622,7 +622,7 @@ static inline UIViewController *XMNSafeUnWrapViewController(UIViewController *co
     
     return [[super viewControllers] xmn_map:^id(__kindof UIViewController *obj, NSInteger index) {
        
-         return XMNSafeUnWrapViewController(obj);
+        return XMNSafeUnWrapViewController(obj);
     }];
     return self.viewControllers;
 }
